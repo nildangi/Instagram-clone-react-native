@@ -1,17 +1,16 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Button } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import InputBox from '../../components/InputBox';
 import { useNavigation } from '@react-navigation/native';
-
 
 // create a component
 const Login = () => {
     const navigation = useNavigation();
+
     const handleLogin = (values) => {
         //console.log(values);
-        navigation.navigate('Dashboard')
-
+        navigation.navigate('Dashboard');
     };
 
     return (
@@ -20,18 +19,17 @@ const Login = () => {
                 <Image source={require('../../assets/Instagram.png')} />
             </View>
             <InputBox />
-            <View>
-                <Button style={styles.btnstyle} onPress={() => navigation.navigate('Dashboard')} title='Login' />
-            </View>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Dashboard')}>
+                <Text style={styles.btnText}>Login</Text>
+            </TouchableOpacity>
             <View>
                 <TouchableOpacity>
-                    <Text >
+                    <Text>
                         Signup
                     </Text>
                 </TouchableOpacity>
             </View>
         </View>
-
     );
 };
 
@@ -42,10 +40,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#ffff',
-
     },
-
+    button: {
+        backgroundColor: '#405DE6',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginTop: 10,
+    },
+    btnText: {
+        color: 'white',
+        fontSize: 20,
+        width:310,
+        textAlign: 'center',
+    },
 });
 
-//make this component available to the app
+// make this component available to the app
 export default Login;
